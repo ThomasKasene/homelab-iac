@@ -26,8 +26,13 @@ for managed_node in $managed_nodes ; do
 	ssh -l $username $managed_node "cd ~/.ssh ; sed -i '/^ssh-ed25519 .\\+ ansible-controller\$/d' authorized_keys ; echo \"$public_key\" >> authorized_keys"
 done
 
+for managed_node in $managed_nodes ; do
+	echo "Adding fingerprint for $managed_node on $controller_node, if necessary"
+	ssh -l $username $controller_node "ssh -i ~/.ssh/ansible_ed25519 -o StrictHostKeyChecking=no -l $username $managed_node \"exit\""
+done
+
 echo "Installing Git on node $controller_node"
 ssh -l $username $controller_node "sudo apt install git -y 1> /dev/null 2>&1"
 
 echo "Cloning homelab-iac repository to $controller_node"
-ssh -l $username $controller_node "git clone https://github.com/ThomasKasene/homelab-iac.git"
+ssh -l $username $controller_node "rm -rf homelab-iac ; git clone https://github.com/ThomasKasene/homelab-iac.git"
