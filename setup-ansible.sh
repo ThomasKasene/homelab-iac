@@ -1,10 +1,8 @@
 #!/bin/bash
 username=thomas
 controller_node='10.0.2.1'
-managed_nodes="10.0.2.2 10.0.2.3"
+managed_nodes="10.0.2.1 10.0.2.2 10.0.2.3"
 
-echo "Adding fingerprint for $controller_node locally, if necessary"
-ssh -o StrictHostKeyChecking=no -l $username $controller_node "exit"
 for managed_node in $managed_nodes ; do
 	echo "Adding fingerprint for $managed_node locally, if necessary"
 	ssh -o StrictHostKeyChecking=no -l $username $managed_node "exit"
