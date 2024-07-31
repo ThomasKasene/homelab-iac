@@ -21,7 +21,7 @@
   tasks:
 
     - name: Resolving the latest stable K3S version
-      ansible.builting.url:
+      ansible.builtin.url:
         url: https://api.github.com/repos/k3s-io/k3s/releases/latest
         return_content: true
       register: latest_release_manifest
