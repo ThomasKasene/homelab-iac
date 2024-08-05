@@ -1,0 +1,13 @@
+- name: Resolving the latest stable K3S version
+  ansible.builtin.uri:
+    url: url: https://api.github.com/repos/k3s-io/k3s/releases/latest
+    return_content: true
+  register: latest_release_manifest
+
+- name: Downloading K3S
+  ansible.builtin.get_url:
+    url: "{{ latest_release_manifest.json | community.general.json_query(download_url_jsonpath) }}"
+    dest: "~/downloads/"
+  vars:
+    download_url_jsonpath: "assets[?name=='k3s-arm64'].browser_download_url"
+

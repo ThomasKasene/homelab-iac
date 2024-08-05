@@ -1,0 +1,11 @@
+---
+
+- hosts: all
+  become: true
+  roles:
+    - global
+
+- hosts: k3s-masters
+  become: true
+  roles:
+    - k3s-masters
