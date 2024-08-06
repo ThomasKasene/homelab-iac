@@ -1,14 +1,14 @@
 # Homelab Infrastructure as Code
 
-This repository is a playground for me to learn about various technologies such as Linux, Raspberry PI, and K3S. It's not currently stable and you shouldn't use it.
+This repository is a playground for me to learn about various technologies such as Linux, Raspberry Pi, and K3S. It's not currently stable and you shouldn't use it.
 
-## Raspberry PI K3S Cluster
+## Raspberry Pi K3S Cluster
 
 ### Prerequisites
 
-Each node in the Raspberry PI K3S cluster to be flashed with the following settings:
+Each node in the Raspberry Pi K3S cluster to be flashed with the following settings:
 
-- Raspberry PI OS Lite (64-bit)
+- Raspberry Pi OS Lite (64-bit)
 - A unique hostname
 - SSH enabled
 
