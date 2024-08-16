@@ -5,13 +5,13 @@
   roles:
     - global
 
-- hosts: k3s-masters
+- hosts: rpi4_k3s_masters
   become: true
   roles:
     - k3s-rpi4-global
     - k3s-masters
 
-- hosts: k3s-workers
+- hosts: rpi4_k3s_workers
   become: true
   roles:
     - k3s-rpi4-global
