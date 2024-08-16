@@ -8,4 +8,11 @@
 - hosts: k3s-masters
   become: true
   roles:
+    - k3s-rpi4-global
     - k3s-masters
+
+- hosts: k3s-workers
+  become: true
+  roles:
+    - k3s-rpi4-global
+    - k3s-workers
