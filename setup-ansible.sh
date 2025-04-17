@@ -34,16 +34,16 @@ for managed_node in $managed_nodes ; do
 done
 
 echo "[$controller_node] Updating package cache"
-ssh -l $username $controller_node "sudo apt update 1> /dev/null 2>&1"
+ssh -l $username $controller_node "sudo apt-get update 1> /dev/null 2>&1"
 
 echo "[$controller_node] Installing Ansible"
-ssh -l $username $controller_node "sudo apt install ansible-core -y 1> /dev/null 2>&1"
+ssh -l $username $controller_node "sudo apt-get install ansible-core -y 1> /dev/null 2>&1"
 
 echo "[$controller_node] Installing Git"
-ssh -l $username $controller_node "sudo apt install git -y 1> /dev/null 2>&1"
+ssh -l $username $controller_node "sudo apt-get install git -y 1> /dev/null 2>&1"
 
 echo "[$controller_node] Cloning homelab-iac repository"
 ssh -l $username $controller_node "sudo su ansible -c 'rm -rf ~/homelab-iac ; git clone https://github.com/ThomasKasene/homelab-iac.git ~/homelab-iac' 1> /dev/null 2>&1"
 
-echo "[$controller_node] Running Ansible playbook site.yml"
-ssh -l $username $controller_node "sudo su ansible -c 'cd ~/homelab-iac ; ansible-playbook ~/homelab-iac/site.yml'"
+#echo "[$controller_node] Running Ansible playbook site.yml"
+#ssh -l $username $controller_node "sudo su ansible -c 'cd ~/homelab-iac ; ansible-playbook ~/homelab-iac/site.yml'"
