@@ -2,8 +2,8 @@
 
 # Pre-requisites:
 # 1. Two nodes; one to be the control node, and another having the role of host node
-# 2. Both nodes should have an existing user SSH access, using public/private key pairs for authentication
-# 3. SSH user should also have not need to enter a password to use sudo
+# 2. Both nodes should have an existing user with SSH access, and use public/private key pairs for authentication
+# 3. SSH users should also have not need to enter a password to use sudo
 
 function log_usage {
 	echo "Usage: $0 <control_node_ipv4> <control_node_ssh_user> <host_node_ipv4> <host_node_ssh_user>"
