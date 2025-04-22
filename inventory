@@ -1,18 +1,14 @@
-[k3s_all]
+[uctronics_rpi4s]
 10.0.2.1
 10.0.2.2
 10.0.2.3
 
-[k3s_masters]
-10.0.2.1
+[k3s_servers]
+10.0.1.2
 
-[k3s_workers]
+[k3s_agents]
+10.0.2.1
 10.0.2.2
 10.0.2.3
 
-[rpi4_k3s_masters]
-10.0.2.1
 
-[rpi4_k3s_workers]
-10.0.2.2
-10.0.2.3
