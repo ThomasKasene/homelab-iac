@@ -5,14 +5,22 @@
   roles:
     - global
 
-- hosts: rpi4_k3s_masters
+- hosts: uctronics_rpi4s
   become: true
   roles:
-    - k3s-rpi4-global
-    - k3s-masters
+    - uctronics_rpi4
 
-- hosts: rpi4_k3s_workers
+- hosts: rpi4_k3s_nodes
   become: true
   roles:
     - k3s-rpi4-global
-    - k3s-workers
+
+- hosts: k3s_servers
+  become: true
+  roles:
+    - k3s-server
+
+- hosts: k3s_agents
+  become: true
+  roles:
+    - k3s-agent
