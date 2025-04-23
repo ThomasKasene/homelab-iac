@@ -10,17 +10,17 @@
   roles:
     - uctronics_rpi4
 
-- hosts: rpi4_k3s_nodes
-  become: true
-  roles:
-    - k3s-rpi4-global
+#- hosts: rpi4_k3s_nodes
+#  become: true
+#  roles:
+#    - k3s-rpi4-global
 
-- hosts: k3s_servers
-  become: true
-  roles:
-    - k3s-server
+#- hosts: k3s_servers
+#  become: true
+#  roles:
+#    - k3s-server
 
-- hosts: k3s_agents
-  become: true
-  roles:
-    - k3s-agent
+#- hosts: k3s_agents
+#  become: true
+#  roles:
+#    - k3s-agent
