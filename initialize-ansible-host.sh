@@ -109,6 +109,8 @@ fi
 
 ssh_control_node "sudo su $ansible_username -c 'ssh -i ~/.ssh/${ansible_username}_ed25519 -o StrictHostKeyChecking=no -o LogLevel=ERROR -l $ansible_username $control_node_ip \"exit\"'"
 
+ssh_control_node "sudo apt-get install -yq ansible"
+
 # Step 4: Set up the ansible user on the host node, if necessary
 if ! $(ssh_host_node "sudo id -u $ansible_username &>/dev/null"); then
 	log_host_node "Creating the $ansible_username user"

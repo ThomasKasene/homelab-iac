@@ -14,6 +14,4 @@ ansible_username=$1
 
 sudo su $ansible_username
 
-cd ~/
-
-sudo su ansible -c 'cd ~/homelab-iac ; ansible-playbook ~/homelab-iac/site.yml'
+sudo ansible-playbook ~/homelab-iac/site.yml
