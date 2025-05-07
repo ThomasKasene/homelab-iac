@@ -24,6 +24,7 @@
 - name: Add automatic startup of RPI4 LCD display to rc.local
   ansible.builtin.blockinfile:
     insertbefore: 'exit 0'
+    path: /etc/rc.local
     block: |
       cd ~/SKU_RM0004/
       make clean
