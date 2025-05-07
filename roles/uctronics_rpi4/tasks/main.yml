@@ -1,16 +1,11 @@
-- name: Enable i2c1 and set the speed
-  ansible.builtin.lineinfile:
-    line: dtparam=i2c_arm=on,i2c_arm_baudrate=400000
-    dest: /boot/config.txt
-    regexp: ^dtparam=i2c_arm=on,i2c_arm_baudrate=400000
-  register: i2cl
-
-- name: Enable shutdown button
-  ansible.builtin.lineinfile:
-    line: dtoverlay=gpio-shutdown,gpio_pin=4,active_low=1,gpio_pull=up
-    dest: /boot/config.txt
-    regexp: ^dtoverlay=gpio-shutdown,gpio_pin=4,active_low=1,gpio_pull=up
-  register: shutdown_button
+- name: Enable i2c1 and set the speed, and enable shutdown button
+  ansible.builtin.blockinfile:
+    insertafter: '# Uncomment some or all of these to enable the optional hardware interfaces'
+    path: /boot/firmware/config.txt
+    block: |
+      dtparam=i2c_arm=on,i2c_arm_baudrate=400000
+      dtoverlay=gpio-shutdown,gpio_pin=4,active_low=1,gpio_pull=up
+  register: boot-config
 
 - name: Clone UCTRONICS' Github repository for RPI4 LCD display
   ansible.builtin.git:
@@ -30,8 +25,9 @@
       make clean
       make
       ./display &
+  register: rc
 
 - name: Rebooting node
   ansible.builtin.reboot:
     reboot_timeout: 300
-  when: i2cl.changed or shutdown_button.changed
+  when: boot-config.changed or rc.changed
