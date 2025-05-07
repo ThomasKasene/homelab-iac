@@ -25,7 +25,7 @@
   ansible.builtin.blockinfile:
     insertbefore: 'exit 0'
     block: |
-      cd Â~/SKU_RM0004/
+      cd ~/SKU_RM0004/
       make clean
       make
       ./display &
