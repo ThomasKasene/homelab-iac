@@ -5,7 +5,7 @@
     block: |
       dtparam=i2c_arm=on,i2c_arm_baudrate=400000
       dtoverlay=gpio-shutdown,gpio_pin=4,active_low=1,gpio_pull=up
-  register: boot-config
+  register: boot
 
 - name: Clone UCTRONICS' Github repository for RPI4 LCD display
   ansible.builtin.git:
@@ -30,4 +30,4 @@
 - name: Rebooting node
   ansible.builtin.reboot:
     reboot_timeout: 300
-  when: boot-config.changed or rc.changed
+  when: boot.changed or rc.changed
